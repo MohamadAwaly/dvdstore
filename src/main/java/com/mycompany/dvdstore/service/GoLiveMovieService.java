@@ -1,16 +1,16 @@
 package com.mycompany.dvdstore.service;
 
 import com.mycompany.dvdstore.entity.Movie;
-import com.mycompany.dvdstore.repository.MovieRepository;
+import com.mycompany.dvdstore.repository.MemoryMovieRepository;
 
 public class GoLiveMovieService implements MovieServiceInterface {
-    private MovieRepository movieRepository = new MovieRepository();
+    private MemoryMovieRepository movieRepository;
 
-    public MovieRepository getMovieRepository() {
+    public MemoryMovieRepository getMovieRepository() {
         return movieRepository;
     }
 
-    public void setMovieRepository(MovieRepository movieRepository) {
+    public void setMovieRepository( MemoryMovieRepository movieRepository) {
         this.movieRepository = movieRepository;
     }
 

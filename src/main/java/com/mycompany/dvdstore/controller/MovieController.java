@@ -5,7 +5,7 @@ import com.mycompany.dvdstore.service.MovieServiceInterface;
 
 import java.util.Scanner;
 
-public class MovieController {
+public class MovieController implements MovieControllerInterface {
      private MovieServiceInterface movieService;
 
     public MovieServiceInterface getMovieService() {
@@ -16,12 +16,15 @@ public class MovieController {
         this.movieService = movieService;
     }
 
-    public void addUsingConsole() {
+    public void addUsing() {
         System.out.println("what is the movie name");
         Scanner sc = new Scanner(System.in);
         String name = sc.nextLine();
+        System.out.println("Enter the genre of the film ");
+        String gender = sc.nextLine();
         Movie movie = new Movie();
         movie.setTitel(name);
+        movie.setGenre( gender );
         movieService.registerMovie(movie);
     }
 }
