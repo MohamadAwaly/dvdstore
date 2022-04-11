@@ -7,10 +7,10 @@ import org.springframework.stereotype.Controller;
 
 import java.util.Scanner;
 
-@Controller
+//@Controller
 public class MovieController implements MovieControllerInterface {
 
-    @Autowired
+   // @Autowired
     private MovieServiceInterface movieService;
 
     public MovieServiceInterface getMovieService() {
@@ -32,4 +32,5 @@ public class MovieController implements MovieControllerInterface {
         movie.setGenre(gender);
         movieService.registerMovie(movie);
     }
+
 }

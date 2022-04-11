@@ -2,7 +2,6 @@ package com.mycompany.dvdstore.repository.memory;
 
 import com.mycompany.dvdstore.entity.Movie;
 import com.mycompany.dvdstore.repository.MovieRepositoryInterface;
-import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,12 +15,17 @@ public class MemoryMovieRepository implements MovieRepositoryInterface {
         return movies;
     }
 
-    public void setMovies(List<Movie> movies) {
+    public void setMovies( List<Movie> movies ) {
         this.movies = movies;
     }
 
-    public void add(Movie movie) {
-        movies.add(movie);
-        System.out.println("The movie "+movie.getTitel() +" gender: " +  movie.getGenre() + " has been added.");
+    public void add( Movie movie ) {
+        movies.add( movie );
+        System.out.println( "The movie " + movie.getTitel() + " gender: " + movie.getGenre() + " has been added." );
+    }
+
+    @Override
+    public List<Movie> list() {
+        return movies;
     }
 }
