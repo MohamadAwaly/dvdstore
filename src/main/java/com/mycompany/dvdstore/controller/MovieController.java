@@ -3,13 +3,15 @@ package com.mycompany.dvdstore.controller;
 import com.mycompany.dvdstore.entity.Movie;
 import com.mycompany.dvdstore.service.MovieServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
 import java.util.Scanner;
 
+@Controller
 public class MovieController implements MovieControllerInterface {
 
     @Autowired
-     private MovieServiceInterface movieService;
+    private MovieServiceInterface movieService;
 
     public MovieServiceInterface getMovieService() {
         return movieService;
@@ -27,7 +29,7 @@ public class MovieController implements MovieControllerInterface {
         String gender = sc.nextLine();
         Movie movie = new Movie();
         movie.setTitel(name);
-        movie.setGenre( gender );
+        movie.setGenre(gender);
         movieService.registerMovie(movie);
     }
 }

@@ -1,25 +1,22 @@
 package com.mycompany.dvdstore;
 
-import com.mycompany.dvdstore.controller.MovieController;
 import com.mycompany.dvdstore.controller.MovieControllerInterface;
-import com.mycompany.dvdstore.repository.MemoryMovieRepository;
-import com.mycompany.dvdstore.service.DefaultMovieService;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+@SpringBootApplication
 public class App {
     public static void main(String[] args) {
-//        MovieController movieController = new MovieController();
-//        DefaultMovieService movieService = new DefaultMovieService();
-//        movieController.setMovieService(movieService);
-//        MemoryMovieRepository movieRepository = new MemoryMovieRepository();
-//        movieService.setMovieRepository(movieRepository);
-        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+
+        ApplicationContext context = SpringApplication.run(App.class,args);
         MovieControllerInterface movieControllerInterface  = context.getBean( MovieControllerInterface.class );
-
-
         movieControllerInterface.addUsing();
-//        GoLiveMovieRepository goLiveMovieRepository = new GoLiveMovieRepository();
-//        goLiveMovieRepository.add();
+
     }
 }
