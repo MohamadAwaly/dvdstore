@@ -1,16 +1,20 @@
 package com.mycompany.dvdstore.service;
 
 import com.mycompany.dvdstore.entity.Movie;
-import com.mycompany.dvdstore.repository.MovieRepository;
+import com.mycompany.dvdstore.repository.FileMovieRepository;
+import com.mycompany.dvdstore.repository.MemoryMovieRepository;
+import com.mycompany.dvdstore.repository.MovieRepositoryInterface;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class GoLiveMovieService implements MovieServiceInterface {
-    private MovieRepository movieRepository = new MovieRepository();
+    @Autowired
+    private MovieRepositoryInterface movieRepository;
 
-    public MovieRepository getMovieRepository() {
+    public MovieRepositoryInterface getMovieRepository() {
         return movieRepository;
     }
 
-    public void setMovieRepository(MovieRepository movieRepository) {
+    public void setMovieRepository( MovieRepositoryInterface movieRepository ) {
         this.movieRepository = movieRepository;
     }
 
