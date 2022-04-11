@@ -1,5 +1,6 @@
 package com.mycompany.dvdstore.repository;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
 import java.io.File;
@@ -8,10 +9,9 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class FileMovieRepository {
-
     private MovieRepositoryInterface movieRepositoryInterface;
 
-    @Value("${movies.file.location}")
+    @Value("movies.file.location")
     private File file ;
 
     public void add(){
