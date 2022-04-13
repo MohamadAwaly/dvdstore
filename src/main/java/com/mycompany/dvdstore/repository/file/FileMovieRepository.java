@@ -48,6 +48,35 @@ public class FileMovieRepository implements MovieRepositoryInterface {
         return movies;
     }
 
+    @Override public Movie getById( long id ) {
+        final Movie movie = new Movie();
+        movie.setId(id);
+        try(BufferedReader br = new BufferedReader(new FileReader(file))) {
+            for(String line; (line = br.readLine()) != null; ) {
+
+                final String[] allProperties = line.split("\\;");
+                final long nextMovieId=Long.parseLong(allProperties[0]);
+                if (nextMovieId==id) {
+                    movie.setTitel(allProperties[1]);
+                    movie.setGenre(allProperties[2]);
+                    movie.setDescription(allProperties[3]);
+                    return movie;
+                }
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (NumberFormatException e) {
+            System.err.println("A movie from the file does not have a proper id");
+            e.printStackTrace();
+        }
+        movie.setTitel("UNKNOWN");
+        movie.setGenre("UNKNOWN");
+        movie.setDescription("UNKNOWN");
+        return movie;
+    }
+
     public File getFile() {
         return file;
     }

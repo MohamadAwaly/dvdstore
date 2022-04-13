@@ -1,8 +1,11 @@
 package com.mycompany.dvdstore.entity;
 
 public class Movie {
+
+    private long id;
     private String titel;
     private String genre;
+    public String description;
 
     public String getTitel() {
         return titel;
@@ -18,5 +21,21 @@ public class Movie {
 
     public void setGenre(String genre) {
         this.genre = genre;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId( long id ) {
+        this.id = id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription( String description ) {
+        this.description = description;
     }
 }

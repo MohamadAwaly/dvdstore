@@ -27,4 +27,9 @@ public class GoLiveMovieService implements MovieServiceInterface {
     @Override public List<Movie> getMovieList() {
         return null;
     }
+
+    @Override public Movie getMovieById( long id ) {
+        return movieRepository.getById( id );
+    }
+
 }
