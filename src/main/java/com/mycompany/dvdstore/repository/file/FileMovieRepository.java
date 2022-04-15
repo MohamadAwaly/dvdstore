@@ -16,10 +16,12 @@ public class FileMovieRepository implements MovieRepositoryInterface {
 
     public void add(Movie movie){
 //        System.out.printf("test");
+        long lastId=list().stream().map(Movie::getId).max(Long::compare).orElse(0L);
+        movie.setId(lastId+1);
         FileWriter writer;
         try{
             writer=new FileWriter(file,true);
-            writer.write(movie.getTitel()+";"+movie.getGenre());
+            writer.write(movie.getId()+";"+movie.getTitel()+";"+movie.getGenre()+";"+movie.getDescription()+"\n");
             writer.close();
         }
         catch (IOException e){
@@ -30,14 +32,17 @@ public class FileMovieRepository implements MovieRepositoryInterface {
     }
 
     @Override public List<Movie> list() {
+        System.out.println("list movie");
         List<Movie> movies=new ArrayList<>();
 
         try( BufferedReader br = new BufferedReader(new FileReader(file))) {
             for(String line; (line = br.readLine()) != null; ) {
                 final Movie movie=new Movie();
                 final String[] titreEtGenre = line.split("\\;");
-                movie.setTitel(titreEtGenre[0]);
-                movie.setGenre(titreEtGenre[1]);
+                movie.setId(Long.parseLong(titreEtGenre[0]));
+                movie.setTitel(titreEtGenre[1]);
+                movie.setGenre(titreEtGenre[2]);
+                movie.setDescription(titreEtGenre[2]);
                 movies.add(movie);
             }
         } catch ( FileNotFoundException e) {
