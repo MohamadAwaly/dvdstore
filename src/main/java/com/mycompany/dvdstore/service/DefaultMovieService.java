@@ -22,8 +22,9 @@ public class DefaultMovieService implements MovieServiceInterface {
         this.movieRepository = movieRepository;
     }
 
-    public void registerMovie(Movie movie) {
+    public Movie registerMovie(Movie movie) {
         movieRepository.add(movie);
+        return movie;
     }
 
     public List<Movie> getMovieList(){
