@@ -10,11 +10,15 @@
         <module name="dvdstore" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="webAppspring" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="dvdstore" options="" />
       <module name="web" options="-parameters" />
+      <module name="webAppspring" options="-parameters" />
     </option>
   </component>
 </project>
